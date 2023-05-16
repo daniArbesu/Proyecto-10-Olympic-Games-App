@@ -1,12 +1,17 @@
-import { useRouter } from 'next/router';
+import { Athlete } from '@/types';
+import { GetStaticProps } from 'next';
 import React from 'react';
 
-const AthletePage = () => {
-  const router = useRouter();
-  const id = router.query.id as string;
-  console.log(router.query);
+interface Props {
+  athlete: Athlete;
+}
 
-  return <h1>This is the page for the athlete with id {id}</h1>;
+const AthletePage = ({ athlete }: Props) => {
+  return (
+    <h1>
+      This is the page for the athlete {athlete.name} {athlete.surname}
+    </h1>
+  );
 };
 
 export default AthletePage;
@@ -15,5 +20,21 @@ export const getStaticPaths = async () => {
   return {
     paths: [],
     fallback: 'blocking',
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context.params?.id as string;
+
+  const response = await fetch(
+    `https://olympic-athletes-server.onrender.com/api/athletes/${id}`
+  );
+  const { data: athlete } = await response.json();
+
+  return {
+    props: {
+      athlete,
+    },
+    revalidate: 60,
   };
 };

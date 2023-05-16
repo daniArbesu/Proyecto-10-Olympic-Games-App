@@ -44,7 +44,7 @@ const AthletesGrid = ({ athletes }: Props) => {
           athletes.map((athlete) => (
             <li key={athlete._id}>
               <AthleteCard>
-                <Link href={`/athlete/${athlete._id}`}>
+                <Link href={`/athletes/${athlete._id}`}>
                   <AthleteImage
                     width={80}
                     height={80}
