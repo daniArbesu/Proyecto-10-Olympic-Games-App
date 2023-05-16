@@ -1,6 +1,12 @@
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyles = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
+  --da-font-headings:'Inter', sans-serif;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
@@ -85,6 +91,14 @@ body {
   overflow-x: hidden;
 }
 
+ul {
+  list-style: none;
+}
+
+h1,h2,h3,h4,h5{
+  font-family: var(--da-font-headings);
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -105,3 +119,6 @@ a {
     color-scheme: dark;
   }
 }
+`;
+
+export default GlobalStyles;

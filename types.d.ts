@@ -4,7 +4,7 @@ export interface Athlete {
   date_of_birth: string;
   height: number;
   name: string;
-  photo_url: string;
+  photo_url?: string;
   surname: string;
   weight: number;
   games: Array<string | undefined>;

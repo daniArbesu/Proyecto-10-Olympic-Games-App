@@ -30,5 +30,6 @@ export const getStaticProps = async () => {
     props: {
       athletes,
     },
+    revalidate: 60,
   };
 };
