@@ -4,8 +4,15 @@ import { styled } from 'styled-components';
 
 const NavbarHeader = styled.header`
   display: flex;
-  flex-direction: row;
   padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const NavbarLinks = styled.ul`
+  display: flex;
+  gap: 2rem;
+  padding: 0 1rem;
 `;
 
 const Navbar = () => {
@@ -20,14 +27,14 @@ const Navbar = () => {
         />
       </Link>
       <nav>
-        <ul>
+        <NavbarLinks>
           <li>
             <Link href="/athletes">Athletes</Link>
           </li>
           <li>
             <Link href="/games">Games</Link>
           </li>
-        </ul>
+        </NavbarLinks>
       </nav>
     </NavbarHeader>
   );
