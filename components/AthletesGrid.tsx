@@ -1,5 +1,6 @@
 import { Athlete } from '@/types';
 import Image from 'next/image';
+import Link from 'next/link';
 import { styled } from 'styled-components';
 
 interface Props {
@@ -43,15 +44,17 @@ const AthletesGrid = ({ athletes }: Props) => {
           athletes.map((athlete) => (
             <li key={athlete._id}>
               <AthleteCard>
-                <AthleteImage
-                  width={80}
-                  height={80}
-                  src={athlete.photo_url ? athlete.photo_url : ''}
-                  alt={`photo from ${athlete.name}`}
-                />
-                <Athletename>
-                  {athlete.name} {athlete.surname}
-                </Athletename>
+                <Link href={`/athlete/${athlete._id}`}>
+                  <AthleteImage
+                    width={80}
+                    height={80}
+                    src={athlete.photo_url ? athlete.photo_url : ''}
+                    alt={`photo from ${athlete.name}`}
+                  />
+                  <Athletename>
+                    {athlete.name} {athlete.surname}
+                  </Athletename>
+                </Link>
               </AthleteCard>
             </li>
           ))

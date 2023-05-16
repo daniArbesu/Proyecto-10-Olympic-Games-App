@@ -9,3 +9,10 @@ export interface Athlete {
   weight: number;
   games: Array<string | undefined>;
 }
+
+export interface Game {
+  _id: string;
+  city: string;
+  year: number;
+  athletes: Array<string | undefined>;
+}

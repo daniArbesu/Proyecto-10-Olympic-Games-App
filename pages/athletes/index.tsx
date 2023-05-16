@@ -1,4 +1,5 @@
 import AthletesGrid from '@/components/AthletesGrid';
+import { PageTitle } from '@/styles/PageStyles';
 import { Athlete } from '@/types';
 
 interface Props {
@@ -10,7 +11,7 @@ const AthletesPage = ({ athletes }: Props) => {
     <main>
       <section>
         <header>
-          <h1>Athletes</h1>
+          <PageTitle>Athletes</PageTitle>
         </header>
         <AthletesGrid athletes={athletes} />
       </section>
