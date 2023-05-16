@@ -1,3 +1,4 @@
+import { AthleteImage } from '@/styles/PageStyles';
 import { Athlete } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,11 +23,6 @@ const AthleteCard = styled.article`
   width: 130px;
   text-align: center;
   gap: 0.7rem;
-`;
-
-const AthleteImage = styled(Image)`
-  border-radius: 50%;
-  object-fit: cover;
 `;
 
 const Athletename = styled.h3`

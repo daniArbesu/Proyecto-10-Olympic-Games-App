@@ -1,5 +1,4 @@
 import { Inter } from 'next/font/google';
-import { createGlobalStyle } from 'styled-components';
 import Header from '@/components/Header';
 import type { AppProps } from 'next/app';
 import GlobalStyles from '@/styles/GlobalStyles';

@@ -50,6 +50,10 @@ body {
   background-color: var(--da-color-background);
 }
 
+main{
+  padding: 0 .625rem;
+}
+
 a {
   color: inherit;
   text-decoration: none;
