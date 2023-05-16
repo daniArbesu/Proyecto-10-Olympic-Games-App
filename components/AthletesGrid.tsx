@@ -10,15 +10,28 @@ const AthletesList = styled.ul`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+`;
+
+const AthleteCard = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 130px;
+  text-align: center;
+  gap: 0.7rem;
+`;
+
+const AthleteImage = styled(Image)`
+  border-radius: 50%;
+  object-fit: cover;
 `;
 
 const Athletename = styled.h3`
-  color: #2d2d2d;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 20px;
-  min-height: 35px;
+  line-height: 18px;
   text-transform: uppercase;
 `;
 
@@ -29,8 +42,8 @@ const AthletesGrid = ({ athletes }: Props) => {
         {athletes ? (
           athletes.map((athlete) => (
             <li key={athlete._id}>
-              <article>
-                <Image
+              <AthleteCard>
+                <AthleteImage
                   width={80}
                   height={80}
                   src={athlete.photo_url ? athlete.photo_url : ''}
@@ -39,7 +52,7 @@ const AthletesGrid = ({ athletes }: Props) => {
                 <Athletename>
                   {athlete.name} {athlete.surname}
                 </Athletename>
-              </article>
+              </AthleteCard>
             </li>
           ))
         ) : (

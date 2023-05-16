@@ -1,5 +1,7 @@
+import Head from 'next/head';
+
 const Header = () => {
-  return <div>Header</div>;
+  return <Head>Header</Head>;
 };
 
 export default Header;
