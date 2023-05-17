@@ -11,9 +11,10 @@ const DetailsRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 0px;
+  padding: 1rem 0px;
   width: 100%;
   border-bottom: 0.1rem solid #e5e5e5;
+  font-size: 0.875rem;
 
   > span:first-child {
     color: #878787;
