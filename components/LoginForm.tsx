@@ -33,6 +33,7 @@ const LoginFormButton = styled.button`
   color: white;
   border: 0;
   border-radius: 5px;
+  font-size: 1rem;
 `;
 
 const LoginForm = () => {
