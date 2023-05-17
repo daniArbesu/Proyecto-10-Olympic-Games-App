@@ -1,13 +1,9 @@
+import { AthleteSectionTitle } from '@/styles/PageStyles';
 import { Athlete } from '@/types';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 import { styled } from 'styled-components';
 
 type Props = Pick<Athlete, 'bio'>;
-
-const AthleteBioTitle = styled.h2`
-  font-size: 3.5rem;
-  line-height: 5rem;
-`;
 
 const AthleteBioText = styled(ReactMarkdown)`
   font-size: 1.1rem;
@@ -22,7 +18,7 @@ const AthleteBioText = styled(ReactMarkdown)`
 const AthleteBio = ({ bio }: Props) => {
   return (
     <section>
-      <AthleteBioTitle>Biography</AthleteBioTitle>
+      <AthleteSectionTitle>Biography</AthleteSectionTitle>
       <AthleteBioText>{bio}</AthleteBioText>
     </section>
   );

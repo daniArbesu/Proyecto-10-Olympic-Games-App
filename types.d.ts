@@ -7,12 +7,12 @@ export interface Athlete {
   photo_url?: string;
   surname: string;
   weight: number;
-  games: Array<string | undefined>;
+  games: Array<string | Game | undefined>;
 }
 
 export interface Game {
   _id: string;
   city: string;
   year: number;
-  athletes: Array<string | undefined>;
+  athletes: Array<string | Athlete | undefined>;
 }
