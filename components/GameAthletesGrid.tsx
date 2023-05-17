@@ -9,7 +9,7 @@ interface Props {
 const AthletesList = styled.ul`
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1.5rem;
   padding: 1rem 0;
 `;
