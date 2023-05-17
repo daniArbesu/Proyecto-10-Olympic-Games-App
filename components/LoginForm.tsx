@@ -6,10 +6,16 @@ type Inputs = {
   password: string;
 };
 
-const LoginFormWrapper = styled.form`
+const LoginSectionWrapper = styled.section`
   display: flex;
   flex-direction: column;
   padding: 1rem 2rem;
+  gap: 2rem;
+`;
+
+const LoginFormWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 `;
 
@@ -39,7 +45,7 @@ const LoginForm = () => {
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
   return (
-    <section>
+    <LoginSectionWrapper>
       <p>
         If you want to edit some of the athletes in this App you need to Log In.
         If you don&apos;t you can still navigate through our App
@@ -68,7 +74,7 @@ const LoginForm = () => {
 
         <LoginFormButton type="submit">Log In</LoginFormButton>
       </LoginFormWrapper>
-    </section>
+    </LoginSectionWrapper>
   );
 };
 
