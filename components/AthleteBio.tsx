@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 type Props = Pick<Athlete, 'bio'>;
 
 const AthleteBioTitle = styled.h2`
-  font-size: 4rem;
+  font-size: 3.5rem;
   line-height: 5rem;
 `;
 
