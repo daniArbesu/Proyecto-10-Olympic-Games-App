@@ -1,6 +1,7 @@
 import GamesList from '@/components/GamesList';
 import { PageTitle } from '@/styles/PageStyles';
 import { Game } from '@/types';
+import { sortGamesByRecentYear } from '@/utils/gamesUtils';
 
 interface Props {
   games: Array<Game>;
@@ -25,7 +26,10 @@ export const getStaticProps = async () => {
   const response = await fetch(
     'https://olympic-athletes-server.onrender.com/api/games/'
   );
-  const { data: games } = await response.json();
+  const { data: unsortedGames } = await response.json();
+
+  const games = [...unsortedGames];
+  sortGamesByRecentYear(games);
 
   return {
     props: {
