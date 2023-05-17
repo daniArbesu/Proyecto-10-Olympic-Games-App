@@ -7,12 +7,28 @@ const NavbarHeader = styled.header`
   padding: 1rem;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 1001;
+  background-color: var(--da-color-background);
 `;
 
 const NavbarLinks = styled.ul`
   display: flex;
   gap: 2rem;
   padding: 0 1rem;
+`;
+
+const LoginButton = styled.button`
+  cursor: pointer;
+  padding: 0.7rem;
+  border-radius: 5px;
+  border: 0;
+  background-color: #0078d0;
+  color: white;
 `;
 
 const Navbar = () => {
@@ -36,6 +52,7 @@ const Navbar = () => {
           </li>
         </NavbarLinks>
       </nav>
+      <LoginButton>Log In</LoginButton>
     </NavbarHeader>
   );
 };
