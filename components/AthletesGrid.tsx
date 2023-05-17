@@ -3,6 +3,7 @@ import { Athlete } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
 import { styled } from 'styled-components';
+import AthleteCard from './AthleteCard';
 
 interface Props {
   athletes: Array<Athlete>;
@@ -16,22 +17,6 @@ const AthletesList = styled.ul`
   padding: 1rem 2rem;
 `;
 
-const AthleteCard = styled.article`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 130px;
-  text-align: center;
-  gap: 0.7rem;
-`;
-
-const Athletename = styled.h3`
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 18px;
-  text-transform: uppercase;
-`;
-
 const AthletesGrid = ({ athletes }: Props) => {
   return (
     <section>
@@ -39,19 +24,12 @@ const AthletesGrid = ({ athletes }: Props) => {
         {athletes ? (
           athletes.map((athlete) => (
             <li key={athlete._id}>
-              <AthleteCard>
-                <Link href={`/athletes/${athlete._id}`}>
-                  <AthleteImage
-                    width={80}
-                    height={80}
-                    src={athlete.photo_url ? athlete.photo_url : ''}
-                    alt={`photo from ${athlete.name}`}
-                  />
-                  <Athletename>
-                    {athlete.name} {athlete.surname}
-                  </Athletename>
-                </Link>
-              </AthleteCard>
+              <AthleteCard
+                photo_url={athlete.photo_url}
+                _id={athlete._id}
+                name={athlete.name}
+                surname={athlete.surname}
+              />
             </li>
           ))
         ) : (
