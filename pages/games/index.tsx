@@ -1,5 +1,6 @@
 import { PageTitle } from '@/styles/PageStyles';
 import { Game } from '@/types';
+import Link from 'next/link';
 
 interface Props {
   games: Array<Game>;
@@ -15,9 +16,11 @@ const GamesPage = ({ games }: Props) => {
         <div>
           {games ? (
             games.map((game) => (
-              <h3 key={game._id}>
-                {game.city} {game.year}
-              </h3>
+              <Link href={`/games/${game._id}`} key={game._id}>
+                <h3>
+                  {game.city} {game.year}
+                </h3>
+              </Link>
             ))
           ) : (
             <p>Loading Olympic Games...</p>
