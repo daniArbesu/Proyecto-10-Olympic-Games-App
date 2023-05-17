@@ -5,7 +5,8 @@ const GlobalStyles = createGlobalStyle`
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --da-font-headings:'Inter', sans-serif;
+  --da-font-headings:'Olympic Headline', sans-serif;
+  --da-font-p: 'Olympic Sans', sans-serif;
   
   /* COLOR PALETTE */
   --da-color-primary: #333333;
@@ -19,6 +20,22 @@ const GlobalStyles = createGlobalStyle`
   --da-typography-h3: 1.625rem;
 }
 
+@font-face {
+    font-family: 'Olympic Headline';
+    src: url("/OlympicHeadline.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: auto;
+  }
+
+  @font-face {
+    font-family: 'Olympic Sans';
+    src: url("/OlympicSans.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: auto;
+  }
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -29,6 +46,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  font-family: var(--da-font-p);
 }
 
 ul {

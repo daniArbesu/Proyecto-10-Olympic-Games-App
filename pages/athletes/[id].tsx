@@ -1,3 +1,5 @@
+import AthleteBio from '@/components/AthleteBio';
+import AthleteTable from '@/components/AthleteTable';
 import { AthleteImage, PageTitle } from '@/styles/PageStyles';
 import { Athlete } from '@/types';
 import { GetStaticProps } from 'next';
@@ -9,25 +11,6 @@ const AthleteHeader = styled.header`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-`;
-
-const AthleteDetails = styled.section`
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 0;
-`;
-
-const DetailsRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 0px;
-  width: 100%;
-  border-bottom: 0.1rem solid #e5e5e5;
-
-  > span:first-child {
-    color: #878787;
-  }
 `;
 
 interface Props {
@@ -49,24 +32,8 @@ const AthletePage = ({ athlete }: Props) => {
             {athlete.name} {athlete.surname}
           </PageTitle>
         </AthleteHeader>
-        <AthleteDetails>
-          <DetailsRow>
-            <span>Date of Birth</span>
-            <span>{athlete.date_of_birth}</span>
-          </DetailsRow>
-          <DetailsRow>
-            <span>Height</span>
-            <span>{athlete.height} cm</span>
-          </DetailsRow>
-          <DetailsRow>
-            <span>Weigth</span>
-            <span>{athlete.weight} kg</span>
-          </DetailsRow>
-          <DetailsRow>
-            <span>Won a medal in</span>
-            <span>{athlete.games.length} games</span>
-          </DetailsRow>
-        </AthleteDetails>
+        <AthleteTable athlete={athlete} />
+        <AthleteBio bio={athlete.bio} />
       </section>
     </main>
   );
