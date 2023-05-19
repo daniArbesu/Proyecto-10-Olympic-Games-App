@@ -1,8 +1,8 @@
 import theme from '@/styles/theme';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { styled } from 'styled-components';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import LoginForm from './LoginForm';
 
 interface Props {

@@ -61,7 +61,7 @@ const LoginFormWrapper = styled.section<Props>`
 
 const LoginForm = ({ active }: Props) => {
   const { user, setUser } = useContext(UserContext) as CurrentUserContextType;
-  console.log(user);
+
   const {
     register,
     handleSubmit,
@@ -83,7 +83,10 @@ const LoginForm = ({ active }: Props) => {
 
     console.log(info); */
 
-    const response = loginUser(data).then(({ data }) => setUser(data));
+    const response = loginUser(data).then(({ data }) => {
+      localStorage.setItem('user', JSON.stringify(data));
+      setUser(data);
+    });
 
     toast.promise(response, {
       loading: 'Loading...',

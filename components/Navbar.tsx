@@ -1,7 +1,13 @@
+import { CurrentUserContextType, UserContext } from '@/context/UserContext';
 import theme from '@/styles/theme';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useContext } from 'react';
 import { styled } from 'styled-components';
+
+interface LoginButtonProps {
+  login: boolean;
+}
 
 const NavbarHeader = styled.header`
   align-items: center;
@@ -23,12 +29,20 @@ const NavbarLinks = styled.ul`
   padding: 0 1rem;
 `;
 
-const LoginButton = styled.button`
-  background-color: ${theme.colors.olympic_blue};
+const LoginButton = styled.button<LoginButtonProps>`
+  background-color: ${({ login }) =>
+    login ? theme.colors.olympic_blue : theme.colors.olympic_red};
   color: white;
 `;
 
 const Navbar = () => {
+  const { user, setUser } = useContext(UserContext) as CurrentUserContextType;
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUser({ email: '', token: '' });
+  };
+
   return (
     <NavbarHeader>
       <Link href="/">
@@ -49,7 +63,13 @@ const Navbar = () => {
           </li>
         </NavbarLinks>
       </nav>
-      <LoginButton>Log In</LoginButton>
+      {user.email ? (
+        <LoginButton onClick={handleLogout} login={false}>
+          Log Out
+        </LoginButton>
+      ) : (
+        <LoginButton login={true}>Log In</LoginButton>
+      )}
     </NavbarHeader>
   );
 };
