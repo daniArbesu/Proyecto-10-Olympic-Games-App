@@ -75,8 +75,6 @@ const Box = styled.div`
   > button {
     background: ${theme.colors.background};
     color: ${theme.colors.primary};
-    font-size: 1rem;
-    font-weight: 500;
   }
   @media (max-width: ${theme.breakpoints.lg}) {
     position: absolute;

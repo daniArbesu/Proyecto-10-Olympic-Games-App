@@ -51,6 +51,8 @@ button{
   border: none;
   cursor: pointer;
   padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: ${theme.fontWeight.regular};
 }
 
 h1,h2,h3,h4,h5{
