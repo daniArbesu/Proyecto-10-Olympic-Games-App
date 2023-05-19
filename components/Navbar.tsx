@@ -4,17 +4,17 @@ import Link from 'next/link';
 import { styled } from 'styled-components';
 
 const NavbarHeader = styled.header`
-  display: flex;
-  padding: 1rem;
-  justify-content: space-between;
   align-items: center;
+  background-color: ${theme.colors.background};
   border-bottom: 1px solid ${theme.colors.navbar_border};
+  display: flex;
+  justify-content: space-between;
   left: 0px;
+  padding: 1rem;
   position: fixed;
   top: 0px;
   width: 100%;
   z-index: 1001;
-  background-color: ${theme.colors.background};
 `;
 
 const NavbarLinks = styled.ul`

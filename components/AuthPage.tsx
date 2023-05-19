@@ -196,7 +196,7 @@ const AuthPage = () => {
               <h3>Log In</h3>
               <input type="email" placeholder="Email" name="" id="" />
               <input type="password" placeholder="Password" name="" id="" />
-              <input type="submit" value="login" name="" id="" />
+              <input type="submit" value="Log In" name="" id="" />
             </form>
           </LoginForm>
           <SignupForm active={isFormBoxActive}>
@@ -204,7 +204,7 @@ const AuthPage = () => {
               <h3>Sign Up</h3>
               <input type="email" placeholder="Email" name="" id="" />
               <input type="password" placeholder="Password" name="" id="" />
-              <input type="submit" value="signup" name="" id="" />
+              <input type="submit" value="Sign Up" name="" id="" />
             </form>
           </SignupForm>
         </FormBox>
