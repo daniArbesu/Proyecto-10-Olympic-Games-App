@@ -73,14 +73,10 @@ const Box = styled.div`
   }
 
   > button {
-    cursor: pointer;
-    padding: 10px 20px;
     background: ${theme.colors.background};
     color: ${theme.colors.primary};
     font-size: 1rem;
     font-weight: 500;
-    border: none;
-    border-radius: ${theme.borderRadius.button};
   }
   @media (max-width: ${theme.breakpoints.lg}) {
     position: absolute;
@@ -159,6 +155,7 @@ const Form = styled.div<Props>`
     border: none;
     color: ${theme.colors.background};
     max-width: 100px;
+    border-radius: ${theme.borderRadius.button};
     cursor: pointer;
   }
 `;

@@ -24,10 +24,6 @@ const NavbarLinks = styled.ul`
 `;
 
 const LoginButton = styled.button`
-  cursor: pointer;
-  padding: 0.7rem;
-  border-radius: 5px;
-  border: 0;
   background-color: ${theme.colors.olympic_blue};
   color: white;
 `;
