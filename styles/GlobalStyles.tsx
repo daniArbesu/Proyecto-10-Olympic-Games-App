@@ -47,7 +47,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: var(--da-font-p);
-  padding-top: 3rem;
+  padding-top: 2.5rem;
 }
 
 ul {
