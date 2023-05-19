@@ -2,6 +2,8 @@ import theme from '@/styles/theme';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useState } from 'react';
 import { styled } from 'styled-components';
+import { loginUser } from '@/utils/authentication';
+import toast, { Toaster } from 'react-hot-toast';
 
 interface Props {
   active: boolean;
@@ -191,46 +193,83 @@ const AuthPage = () => {
     setIsFormBoxActive(!isFormBoxActive);
   };
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onLogin: SubmitHandler<Inputs> = async (data) => {
+    /*     const { loggedIn, info } = await loginUser(data);
+    const toastLogin = toast.loading('Waiting...');
+
+    if (loggedIn) {
+      toast.dismiss(toastLogin);
+      toast.success('Congrats');
+      return;
+    }
+
+    toast.dismiss(toastLogin);
+    toast.error(info);
+
+    console.log(info); */
+
+    const response = loginUser(data);
+
+    toast.promise(response, {
+      loading: 'Loading...',
+      success: 'Logged in',
+      error: (err) => `${err.toString().replace('Error: ', '')}`,
+    });
+  };
 
   return (
-    <StyledSection active={isFormBoxActive}>
-      <AppTitle>Olympic Games App</AppTitle>
-      <p>
-        If you want to edit some of the athletes in this App you need to Log In.
-        If you don&apos;t you can still navigate through them
-      </p>
-      <Container>
-        <BlurBg>
-          <LoginBox>
-            <h2>Already have an account?</h2>
-            <button onClick={handleSignupButtonClick}>Log In</button>
-          </LoginBox>
-          <Box>
-            <h2>Don&apos;t have an account?</h2>
-            <button onClick={handleSignupButtonClick}>Sign Up</button>
-          </Box>
-        </BlurBg>
-        <FormBox active={isFormBoxActive}>
-          <LoginForm active={isFormBoxActive}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <h3>Log In</h3>
-              <input type="email" placeholder="Email" name="" id="" />
-              <input type="password" placeholder="Password" name="" id="" />
-              <input type="submit" value="Log In" name="" id="" />
-            </form>
-          </LoginForm>
-          <SignupForm active={isFormBoxActive}>
-            <form action="">
-              <h3>Sign Up</h3>
-              <input type="email" placeholder="Email" name="" id="" />
-              <input type="password" placeholder="Password" name="" id="" />
-              <input type="submit" value="Sign Up" name="" id="" />
-            </form>
-          </SignupForm>
-        </FormBox>
-      </Container>
-    </StyledSection>
+    <>
+      <div>
+        <Toaster position="top-center" reverseOrder={false} />
+      </div>
+      <StyledSection active={isFormBoxActive}>
+        <AppTitle>Olympic Games App</AppTitle>
+        <p>
+          If you want to edit some of the athletes in this App you need to Log
+          In. If you don&apos;t you can still navigate through them
+        </p>
+        <Container>
+          <BlurBg>
+            <LoginBox>
+              <h2>Already have an account?</h2>
+              <button onClick={handleSignupButtonClick}>Log In</button>
+            </LoginBox>
+            <Box>
+              <h2>Don&apos;t have an account?</h2>
+              <button onClick={handleSignupButtonClick}>Sign Up</button>
+            </Box>
+          </BlurBg>
+          <FormBox active={isFormBoxActive}>
+            <LoginForm active={isFormBoxActive}>
+              <form onSubmit={handleSubmit(onLogin)}>
+                <h3>Log In</h3>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required={true}
+                  {...register('email', { required: true })}
+                />
+                <input
+                  type="password"
+                  required={true}
+                  placeholder="Password"
+                  {...register('password', { required: true })}
+                />
+                <input type="submit" value="Log In" />
+              </form>
+            </LoginForm>
+            <SignupForm active={isFormBoxActive}>
+              <form action="">
+                <h3>Sign Up</h3>
+                <input type="email" placeholder="Email" name="" id="" />
+                <input type="password" placeholder="Password" name="" id="" />
+                <input type="submit" value="Sign Up" name="" id="" />
+              </form>
+            </SignupForm>
+          </FormBox>
+        </Container>
+      </StyledSection>
+    </>
   );
 };
 

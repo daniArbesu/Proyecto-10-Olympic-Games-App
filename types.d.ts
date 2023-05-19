@@ -16,3 +16,8 @@ export interface Game {
   year: number;
   athletes: Array<string | Athlete | undefined>;
 }
+
+export interface UserData {
+  email: string;
+  password: string;
+}
