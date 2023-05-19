@@ -23,11 +23,11 @@ export const loginUser = async (userData: UserData) => {
       throw new Error(data);
     }
 
-    console.log(data);
-    const { token } = data;
+    const { token, user } = data;
+    const { email } = user;
 
     return {
-      info: token,
+      data: { email, token },
     };
   } catch (error) {
     throw new Error(error as string);

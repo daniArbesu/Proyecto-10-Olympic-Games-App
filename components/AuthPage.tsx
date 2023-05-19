@@ -2,8 +2,8 @@ import theme from '@/styles/theme';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useState } from 'react';
 import { styled } from 'styled-components';
-import { loginUser } from '@/utils/authentication';
 import toast, { Toaster } from 'react-hot-toast';
+import LoginForm from './LoginForm';
 
 interface Props {
   active: boolean;
@@ -130,7 +130,7 @@ const FormBox = styled.div<Props>`
   }
 `;
 
-const Form = styled.div<Props>`
+export const Form = styled.div<Props>`
   position: absolute;
   left: 0;
   width: 100%;
@@ -171,10 +171,6 @@ const Form = styled.div<Props>`
     }
   }
 `;
-const LoginForm = styled(Form)`
-  transition-delay: ${({ active }) => (active ? '0' : '250ms')};
-  left: ${({ active }) => (active ? '-100%' : '0')};
-`;
 
 const SignupForm = styled(Form)`
   transition-delay: ${({ active }) => (active ? '250ms' : '0')};
@@ -191,30 +187,6 @@ const AuthPage = () => {
 
   const handleSignupButtonClick = () => {
     setIsFormBoxActive(!isFormBoxActive);
-  };
-
-  const onLogin: SubmitHandler<Inputs> = async (data) => {
-    /*     const { loggedIn, info } = await loginUser(data);
-    const toastLogin = toast.loading('Waiting...');
-
-    if (loggedIn) {
-      toast.dismiss(toastLogin);
-      toast.success('Congrats');
-      return;
-    }
-
-    toast.dismiss(toastLogin);
-    toast.error(info);
-
-    console.log(info); */
-
-    const response = loginUser(data);
-
-    toast.promise(response, {
-      loading: 'Loading...',
-      success: 'Logged in',
-      error: (err) => `${err.toString().replace('Error: ', '')}`,
-    });
   };
 
   return (
@@ -240,24 +212,7 @@ const AuthPage = () => {
             </Box>
           </BlurBg>
           <FormBox active={isFormBoxActive}>
-            <LoginForm active={isFormBoxActive}>
-              <form onSubmit={handleSubmit(onLogin)}>
-                <h3>Log In</h3>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  required={true}
-                  {...register('email', { required: true })}
-                />
-                <input
-                  type="password"
-                  required={true}
-                  placeholder="Password"
-                  {...register('password', { required: true })}
-                />
-                <input type="submit" value="Log In" />
-              </form>
-            </LoginForm>
+            <LoginForm active={isFormBoxActive} />
             <SignupForm active={isFormBoxActive}>
               <form action="">
                 <h3>Sign Up</h3>
