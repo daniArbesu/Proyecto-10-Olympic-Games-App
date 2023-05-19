@@ -1,9 +1,15 @@
 import theme from '@/styles/theme';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { useState } from 'react';
 import { styled } from 'styled-components';
 
 interface Props {
   active: boolean;
+}
+
+interface Inputs {
+  email: string;
+  password: string;
 }
 
 const StyledSection = styled.main<Props>`
@@ -16,10 +22,16 @@ const StyledSection = styled.main<Props>`
   background: ${({ active }) =>
     active ? theme.colors.olympic_red : theme.colors.olympic_blue};
   transition: 0.5s;
+
+  > p {
+    color: ${theme.colors.background};
+    font-weight: ${theme.fontWeight.medium};
+  }
 `;
 
 const AppTitle = styled.h1`
   color: ${theme.colors.background};
+  font-size: 2.5rem;
 `;
 
 const Container = styled.div`
@@ -89,10 +101,6 @@ const LoginBox = styled(Box)`
     top: 0;
   }
 `;
-const SignupBox = styled(Box)``;
-
-const LoginButton = styled.button``;
-const SignupButton = styled.button``;
 
 const FormBox = styled.div<Props>`
   position: absolute;
@@ -111,7 +119,7 @@ const FormBox = styled.div<Props>`
   transition: 0.5s ease-in-out;
   left: ${({ active }) => (active ? '50%' : '0')};
 
-  @media (max-width: 991px) {
+  @media (max-width: ${theme.breakpoints.lg}) {
     width: 100%;
     height: 500px;
     top: ${({ active }) => (active ? '150px' : '0')};
@@ -134,7 +142,7 @@ const Form = styled.div<Props>`
   }
 
   > form h3 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: ${theme.colors.primary};
     margin-bottom: 20px;
     font-weight: 500;
@@ -152,9 +160,13 @@ const Form = styled.div<Props>`
       active ? theme.colors.olympic_red : theme.colors.olympic_blue};
     border: none;
     color: ${theme.colors.background};
-    max-width: 100px;
+    width: 100px;
     border-radius: ${theme.borderRadius.button};
     cursor: pointer;
+
+    @media (max-width: ${theme.breakpoints.lg}) {
+      width: 100%;
+    }
   }
 `;
 const LoginForm = styled(Form)`
@@ -169,30 +181,39 @@ const SignupForm = styled(Form)`
 
 const AuthPage = () => {
   const [isFormBoxActive, setIsFormBoxActive] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
 
   const handleSignupButtonClick = () => {
     setIsFormBoxActive(!isFormBoxActive);
   };
 
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
   return (
     <StyledSection active={isFormBoxActive}>
       <AppTitle>Olympic Games App</AppTitle>
+      <p>
+        If you want to edit some of the athletes in this App you need to Log In.
+        If you don&apos;t you can still navigate through them
+      </p>
       <Container>
         <BlurBg>
           <LoginBox>
             <h2>Already have an account?</h2>
-            <LoginButton onClick={handleSignupButtonClick}>Log In</LoginButton>
+            <button onClick={handleSignupButtonClick}>Log In</button>
           </LoginBox>
-          <SignupBox>
+          <Box>
             <h2>Don&apos;t have an account?</h2>
-            <SignupButton onClick={handleSignupButtonClick}>
-              Sign Up
-            </SignupButton>
-          </SignupBox>
+            <button onClick={handleSignupButtonClick}>Sign Up</button>
+          </Box>
         </BlurBg>
         <FormBox active={isFormBoxActive}>
           <LoginForm active={isFormBoxActive}>
-            <form action="">
+            <form onSubmit={handleSubmit(onSubmit)}>
               <h3>Log In</h3>
               <input type="email" placeholder="Email" name="" id="" />
               <input type="password" placeholder="Password" name="" id="" />
