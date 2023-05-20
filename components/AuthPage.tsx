@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { styled } from 'styled-components';
 import { Toaster } from 'react-hot-toast';
 import LoginForm from './LoginForm';
+import { Button } from './UI/Button';
 
 interface Props {
   active: boolean;
@@ -29,6 +30,17 @@ const StyledSection = styled.main<Props>`
     color: ${theme.colors.background};
     font-weight: ${theme.fontWeight.medium};
   }
+`;
+
+const SectionContainer = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const AppTitle = styled.h1`
@@ -195,34 +207,40 @@ const AuthPage = () => {
         <Toaster position="top-center" reverseOrder={false} />
       </div>
       <StyledSection active={isFormBoxActive}>
-        <AppTitle>Olympic Games App</AppTitle>
-        <p>
-          If you want to edit some of the athletes in this App you need to Log
-          In. If you don&apos;t you can still navigate through them
-        </p>
-        <Container>
-          <BlurBg>
-            <LoginBox>
-              <h2>Already have an account?</h2>
-              <button onClick={handleSignupButtonClick}>Log In</button>
-            </LoginBox>
-            <Box>
-              <h2>Don&apos;t have an account?</h2>
-              <button onClick={handleSignupButtonClick}>Sign Up</button>
-            </Box>
-          </BlurBg>
-          <FormBox active={isFormBoxActive}>
-            <LoginForm active={isFormBoxActive} />
-            <SignupForm active={isFormBoxActive}>
-              <form action="">
-                <h3>Sign Up</h3>
-                <input type="email" placeholder="Email" name="" id="" />
-                <input type="password" placeholder="Password" name="" id="" />
-                <input type="submit" value="Sign Up" name="" id="" />
-              </form>
-            </SignupForm>
-          </FormBox>
-        </Container>
+        <SectionContainer>
+          <AppTitle>Olympic Games App</AppTitle>
+          <p>
+            If you want to edit some of the athletes in this App you need to Log
+            In. If you don&apos;t you can still navigate through them
+          </p>
+          <Container>
+            <BlurBg>
+              <LoginBox>
+                <h2>Already have an account?</h2>
+                <Button color="standard" onClick={handleSignupButtonClick}>
+                  Log In
+                </Button>
+              </LoginBox>
+              <Box>
+                <h2>Don&apos;t have an account?</h2>
+                <Button color="standard" onClick={handleSignupButtonClick}>
+                  Sign Up
+                </Button>
+              </Box>
+            </BlurBg>
+            <FormBox active={isFormBoxActive}>
+              <LoginForm active={isFormBoxActive} />
+              <SignupForm active={isFormBoxActive}>
+                <form action="">
+                  <h3>Sign Up</h3>
+                  <input type="email" placeholder="Email" name="" id="" />
+                  <input type="password" placeholder="Password" name="" id="" />
+                  <input type="submit" value="Sign Up" name="" id="" />
+                </form>
+              </SignupForm>
+            </FormBox>
+          </Container>
+        </SectionContainer>
       </StyledSection>
     </>
   );

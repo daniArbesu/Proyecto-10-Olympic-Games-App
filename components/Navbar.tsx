@@ -4,10 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { styled } from 'styled-components';
-
-interface LoginButtonProps {
-  login: boolean;
-}
+import { Button } from './UI/Button';
 
 const NavbarHeader = styled.header`
   align-items: center;
@@ -29,12 +26,6 @@ const NavbarLinks = styled.ul`
   padding: 0 1rem;
 `;
 
-const LoginButton = styled.button<LoginButtonProps>`
-  background-color: ${({ login }) =>
-    login ? theme.colors.olympic_blue : theme.colors.olympic_red};
-  color: white;
-`;
-
 const Navbar = () => {
   const { user, setUser } = useContext(UserContext) as CurrentUserContextType;
 
@@ -47,7 +38,7 @@ const Navbar = () => {
     <NavbarHeader>
       <Link href="/">
         <Image
-          src={'https://olympics.com/images/static/b2p-images/logo_color.svg'}
+          src="/logo_color.svg"
           width={87}
           height={40}
           alt="Olympic Games Logo"
@@ -64,11 +55,13 @@ const Navbar = () => {
         </NavbarLinks>
       </nav>
       {user.email ? (
-        <LoginButton onClick={handleLogout} login={false}>
+        <Button onClick={handleLogout} color="red">
           Log Out
-        </LoginButton>
+        </Button>
       ) : (
-        <LoginButton login={true}>Log In</LoginButton>
+        <Button href="/" as={Link} color="blue">
+          Log In
+        </Button>
       )}
     </NavbarHeader>
   );

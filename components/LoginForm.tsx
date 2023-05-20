@@ -55,7 +55,9 @@ const LoginFormWrapper = styled.section<Props>`
   }
 
   @media (max-width: ${theme.breakpoints.lg}) {
-    width: 100%;
+    > form input[type='submit'] {
+      width: 100%;
+    }
   }
 `;
 
