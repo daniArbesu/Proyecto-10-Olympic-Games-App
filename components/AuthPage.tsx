@@ -5,6 +5,7 @@ import { styled } from 'styled-components';
 import { Toaster } from 'react-hot-toast';
 import LoginForm from './LoginForm';
 import { Button } from './UI/Button';
+import SignupForm from './SignupForm';
 
 interface Props {
   active: boolean;
@@ -184,11 +185,6 @@ export const Form = styled.div<Props>`
   }
 `;
 
-const SignupForm = styled(Form)`
-  transition-delay: ${({ active }) => (active ? '250ms' : '0')};
-  left: ${({ active }) => (active ? '0' : '100%')};
-`;
-
 const AuthPage = () => {
   const [isFormBoxActive, setIsFormBoxActive] = useState(false);
   const {
@@ -230,14 +226,7 @@ const AuthPage = () => {
             </BlurBg>
             <FormBox active={isFormBoxActive}>
               <LoginForm active={isFormBoxActive} />
-              <SignupForm active={isFormBoxActive}>
-                <form action="">
-                  <h3>Sign Up</h3>
-                  <input type="email" placeholder="Email" name="" id="" />
-                  <input type="password" placeholder="Password" name="" id="" />
-                  <input type="submit" value="Sign Up" name="" id="" />
-                </form>
-              </SignupForm>
+              <SignupForm active={isFormBoxActive} />
             </FormBox>
           </Container>
         </SectionContainer>
