@@ -13,7 +13,7 @@ const NavbarHeader = styled.header`
   display: flex;
   justify-content: space-between;
   left: 0px;
-  padding: 1rem;
+  padding: 0.8rem 1.5rem;
   position: fixed;
   top: 0px;
   width: 100%;

@@ -1,4 +1,5 @@
 import AuthPage from '@/components/AuthPage';
+import UserPage from '@/components/UserPage';
 import { CurrentUserContextType, UserContext } from '@/context/UserContext';
 import { useContext, useEffect, useState } from 'react';
 
@@ -10,5 +11,5 @@ export default function Home() {
     }
   }, [setUser]);
 
-  return <>{user.email ? null : <AuthPage />}</>;
+  return <>{user.email ? <UserPage /> : <AuthPage />}</>;
 }
