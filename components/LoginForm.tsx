@@ -5,6 +5,7 @@ import { styled } from 'styled-components';
 import toast from 'react-hot-toast';
 import { useContext } from 'react';
 import { CurrentUserContextType, UserContext } from '@/context/UserContext';
+import { Button } from './UI/Button';
 
 type Inputs = {
   email: string;
@@ -43,22 +44,6 @@ const LoginFormWrapper = styled.section<Props>`
     padding: 10px;
     font-size: 1rem;
   }
-
-  > form input[type='submit'] {
-    background: ${({ active }) =>
-      active ? theme.colors.olympic_red : theme.colors.olympic_blue};
-    border: none;
-    color: ${theme.colors.background};
-    width: 100px;
-    border-radius: ${theme.borderRadius.button};
-    cursor: pointer;
-  }
-
-  @media (max-width: ${theme.breakpoints.lg}) {
-    > form input[type='submit'] {
-      width: 100%;
-    }
-  }
 `;
 
 const LoginForm = ({ active }: Props) => {
@@ -71,20 +56,6 @@ const LoginForm = ({ active }: Props) => {
   } = useForm<Inputs>();
 
   const onLogin: SubmitHandler<Inputs> = async (data) => {
-    /*     const { loggedIn, info } = await loginUser(data);
-    const toastLogin = toast.loading('Waiting...');
-
-    if (loggedIn) {
-      toast.dismiss(toastLogin);
-      toast.success('Congrats');
-      return;
-    }
-
-    toast.dismiss(toastLogin);
-    toast.error(info);
-
-    console.log(info); */
-
     const response = loginUser(data).then(({ data }) => {
       localStorage.setItem('user', JSON.stringify(data));
       setUser(data);
@@ -113,7 +84,7 @@ const LoginForm = ({ active }: Props) => {
           placeholder="Password"
           {...register('password', { required: true })}
         />
-        <input type="submit" value="Log In" />
+        <Button color="blue" as="input" type="submit" value="Log In" />
       </form>
     </LoginFormWrapper>
   );
