@@ -22,7 +22,7 @@ const StyledSection = styled.main<Props>`
   justify-content: center;
   align-items: center;
   padding: 0 2rem;
-  min-height: calc(100vh - 5rem);
+  min-height: 100vh;
   background: ${({ active }) =>
     active ? theme.colors.olympic_red : theme.colors.olympic_blue};
   transition: 0.5s;

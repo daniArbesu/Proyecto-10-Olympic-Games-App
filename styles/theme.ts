@@ -7,7 +7,7 @@ const theme = {
     olympic_red: '#f43648',
   },
   typography: {
-    h1: '1.9rem',
+    h1: '2.5rem',
     h2: '1.5rem',
     h3: '1.625rem',
   },
@@ -30,6 +30,9 @@ const theme = {
     lg: '1024px',
     md: '768px',
     sm: '320px',
+  },
+  height: {
+    navbar: '64px',
   },
 };
 

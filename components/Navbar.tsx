@@ -13,11 +13,12 @@ const NavbarHeader = styled.header`
   display: flex;
   justify-content: space-between;
   left: 0px;
-  padding: 0.8rem 1.5rem;
+  padding: 0 1.5rem;
   position: fixed;
   top: 0px;
   width: 100%;
   z-index: 1001;
+  height: ${theme.height.navbar};
 `;
 
 const NavbarLinks = styled.ul`

@@ -39,7 +39,6 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: ${theme.fontFamily.body};
-  padding-top: 2.5rem;
 }
 
 ul {
@@ -63,6 +62,7 @@ body {
 
 main{
   padding: 0 .625rem;
+  padding-top: ${theme.height.navbar};
 }
 
 a {
